@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admas Tender Portal</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+#loginPage {
+    min-height: 100vh;
+
+    background:
+    linear-gradient(
+        rgba(0,51,102,.95),
+        rgba(0,102,170,.95)
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 25px rgba(0,0,0,.3);
+
+    text-align: center;
+}
+
+.login-box h1 {
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.login-box input {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 15px;
+}
+
+.login-box button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #003366;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background: #0055a5;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+
+    padding: 12px;
+
+    border-radius: 5px;
+
+    margin-bottom: 15px;
+
+    display: none;
+}
+
+.login-info {
+    margin-top: 20px;
+
+    background: #eef3f7;
+
+    padding: 12px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+}
+
+/* =========================
+   WEBSITE
+========================= */
+
+#website {
+    display: none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #003366;
+
+    color: white;
+
+    padding: 18px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    margin-left: 20px;
+
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 450px;
+
+    background:
+    linear-gradient(
+        rgba(0,51,102,.85),
+        rgba(0,102,170,.85)
+    );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 60px 10%;
+}
+
+.hero h1 {
+    font-size: 45px;
+
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+
+    background: #ffd700;
+
+    color: #003366;
+
+    padding: 13px 25px;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 60px 8%;
+}
+
+.section-title {
+    text-align: center;
+
+    color: #003366;
+
+    margin-bottom: 30px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    background: white;
+
+    text-align: center;
+}
+
+.about p {
+    max-width: 800px;
+
+    margin: auto;
+
+    line-height: 1.7;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    display: flex;
+
+    gap: 25px;
+
+    justify-content: center;
+}
+
+.card {
+    background: white;
+
+    width: 30%;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    box-shadow: 0 3px 10px #ccc;
+}
+
+.card h3 {
+    color: #003366;
+
+    margin-bottom: 15px;
+}
+
+/* =========================
+   TENDERS
+========================= */
+
+.tenders {
+    background: #eef3f7;
+}
+
+.tender-container {
+    display: grid;
+
+    grid-template-columns:
+    repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.tender-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 3px 10px #ccc;
+}
+
+.tender-card h3 {
+    color: #003366;
+
+    margin-bottom: 15px;
+}
+
+.tender-card p {
+    margin: 10px 0;
+}
+
+.status {
+    display: inline-block;
+
+    background: green;
+
+    color: white;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    margin: 10px 0;
+}
+
+.closed {
+    background: red;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-section {
+    background: white;
+}
+
+.form-box {
+    max-width: 500px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    background: #f4f6f8;
+
+    border-radius: 10px;
+}
+
+.form-box h2 {
+    text-align: center;
+
+    color: #003366;
+
+    margin-bottom: 25px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #003366;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0055a5;
+}
+
+/* =========================
+   DETAILS
+========================= */
+
+.details {
+    background: white;
+}
+
+.details-box {
+    max-width: 900px;
+
+    margin: auto;
+
+    background: #f4f6f8;
+
+    padding: 30px;
+
+    border-radius: 10px;
+}
+
+.details-box h2 {
+    color: #003366;
+
+    margin-bottom: 20px;
+}
+
+.details-box li {
+    margin: 10px 0;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+
+    padding: 12px;
+
+    text-align: left;
+}
+
+th {
+    background: #003366;
+
+    color: white;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    background: #eef3f7;
+}
+
+.contact-box {
+    max-width: 800px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #003366;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 768px) {
+
+    header {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .features {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .tender-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     LOGIN PAGE
+========================= -->
+
+<div id="loginPage">
+
+<div class="login-box">
+
+<h1>ADMAS TENDER</h1>
+
+<p>
+Tender Management Portal
+</p>
+
+<div id="errorMessage" class="error">
+Invalid username or password.
+</div>
+
+<form onsubmit="login(event)">
+
+<input
+type="text"
+id="username"
+placeholder="Enter Username"
+required>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password"
+required>
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+<div class="login-info">
+
+<strong>Login Information</strong>
+
+<br><br>
+
+Username:
+<b>Admas tender</b>
+
+<br>
+
+Password:
+<b>1122</b>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
+
+<div id="website">
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+ADMAS TENDER
+</div>
+
+<nav>
+
+<a href="#home">Home</a>
+
+<a href="#tenders">Tenders</a>
+
+<a href="#details">Details</a>
+
+<a href="#register">Register</a>
+
+<a href="#contact">Contact</a>
+
+<a href="#" onclick="logout()">Logout</a>
+
+</nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+<div>
+
+<h1>
+Welcome to Admas Tender Portal
+</h1>
+
+<p>
+Find, view and apply for available tender opportunities.
+</p>
+
+<a href="#tenders" class="btn">
+View Available Tenders
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+<h2 class="section-title">
+About Admas Tender
+</h2>
+
+<p>
+
+Admas Tender Portal is a web-based tender management
+system designed to provide tender information,
+requirements, deadlines and application opportunities
+for users.
+
+</p>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section>
+
+<h2 class="section-title">
+Our Services
+</h2>
+
+<div class="features">
+
+<div class="card">
+
+<h3>
+Find Tenders
+</h3>
+
+<p>
+Users can easily find available tender opportunities.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+View Details
+</h3>
+
+<p>
+Users can view tender requirements and deadlines.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Apply Online
+</h3>
+
+<p>
+Users can submit their tender application online.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TENDERS -->
+
+<section class="tenders" id="tenders">
+
+<h2 class="section-title">
+Available Tenders
+</h2>
+
+<div class="tender-container">
+
+
+<div class="tender-card">
+
+<h3>
+IT Equipment Supply
+</h3>
+
+<p>
+<strong>Category:</strong>
+Information Technology
+</p>
+
+<p>
+<strong>Opening:</strong>
+October 1, 2026
+</p>
+
+<p>
+<strong>Closing:</strong>
+October 30, 2026
+</p>
+
+<span class="status">
+Open
+</span>
+
+<br><br>
+
+<a href="#details" class="btn">
+View Details
+</a>
+
+</div>
+
+
+<div class="tender-card">
+
+<h3>
+Office Furniture Supply
+</h3>
+
+<p>
+<strong>Category:</strong>
+Furniture
+</p>
+
+<p>
+<strong>Opening:</strong>
+October 5, 2026
+</p>
+
+<p>
+<strong>Closing:</strong>
+November 5, 2026
+</p>
+
+<span class="status">
+Open
+</span>
+
+<br><br>
+
+<a href="#details" class="btn">
+View Details
+</a>
+
+</div>
+
+
+<div class="tender-card">
+
+<h3>
+Cleaning Service
+</h3>
+
+<p>
+<strong>Category:</strong>
+Service
+</p>
+
+<p>
+<strong>Opening:</strong>
+September 20, 2026
+</p>
+
+<p>
+<strong>Closing:</strong>
+October 20, 2026
+</p>
+
+<span class="status closed">
+Closed
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TENDER DETAILS -->
+
+<section class="details" id="details">
+
+<div class="details-box">
+
+<h2>
+Tender Details
+</h2>
+
+<h3>
+IT Equipment Supply
+</h3>
+
+<p>
+
+Admas Tender Portal invites qualified suppliers
+to submit their proposals for the supply of
+IT equipment.
+
+</p>
+
+
+<table>
+
+<tr>
+
+<th>
+Information
+</th>
+
+<th>
+Details
+</th>
+
+</tr>
+
+<tr>
+
+<td>
+Tender ID
+</td>
+
+<td>
+ADM-IT-001
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Category
+</td>
+
+<td>
+Information Technology
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Opening Date
+</td>
+
+<td>
+October 1, 2026
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Closing Date
+</td>
+
+<td>
+October 30, 2026
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Status
+</td>
+
+<td>
+Open
+</td>
+
+</tr>
+
+</table>
+
+
+<h3 style="margin-top:30px;">
+Requirements
+</h3>
+
+<ul>
+
+<li>
+Valid business license
+</li>
+
+<li>
+Tax clearance certificate
+</li>
+
+<li>
+Company profile
+</li>
+
+<li>
+Financial documents
+</li>
+
+<li>
+Technical proposal
+</li>
+
+</ul>
+
+
+<button
+type="button"
+onclick="applyTender()"
+style="margin-top:25px;">
+
+Apply for Tender
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- REGISTER -->
+
+<section class="form-section" id="register">
+
+<div class="form-box">
+
+<h2>
+Create Account
+</h2>
+
+<form onsubmit="registerUser(event)">
+
+<input
+type="text"
+placeholder="Full Name"
+required>
+
+<input
+type="email"
+placeholder="Email Address"
+required>
+
+<input
+type="text"
+placeholder="Username"
+required>
+
+<input
+type="password"
+placeholder="Password"
+required>
+
+<button type="submit">
+Register
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<div class="contact-box">
+
+<h2 class="section-title">
+Contact Us
+</h2>
+
+<p>
+<strong>Organization:</strong>
+Admas Tender Portal
+</p>
+
+<br>
+
+<p>
+<strong>Email:</strong>
+info@admastender.com
+</p>
+
+<br>
+
+<p>
+<strong>Phone:</strong>
++251 900 000 000
+</p>
+
+<br>
+
+<p>
+<strong>Location:</strong>
+Addis Ababa, Ethiopia
+</p>
+
+
+<h3 style="margin:30px 0 15px;">
+Send us a Message
+</h3>
+
+<form onsubmit="sendMessage(event)">
+
+<input
+type="text"
+placeholder="Your Name"
+required>
+
+<input
+type="email"
+placeholder="Your Email"
+required>
+
+<textarea
+rows="5"
+placeholder="Your Message"
+required></textarea>
+
+<button type="submit">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Admas Tender Portal
+</p>
+
+<p style="margin-top:8px;">
+Web Development Student Project
+</p>
+
+</footer>
+
+</div>
+
+
+<script>
+
+/* =========================
+   LOGIN FUNCTION
+========================= */
+
+function login(event) {
+
+    event.preventDefault();
+
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    if (username.toLowerCase() === "admas tender" && password === "1122") {
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("website").style.display = "block";
+
+    } else {
+
+        document.getElementById("errorMessage").style.display = "block";
+
+    }
+}
+
+
+        
+
+
+/* =========================
+   APPLY
+========================= */
+
+function applyTender() {
+
+    alert(
+        "Your tender application has been submitted successfully!"
+    );
+
+}
+
+
+/* =========================
+   REGISTER
+========================= */
+
+function registerUser(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Registration successful!"
+    );
+
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Thank you! Your message has been sent successfully."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
